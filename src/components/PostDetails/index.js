@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BackToButton } from "../Elements";
 import { PostContainer } from "../Elements";
-// import { getPostByID } from "../../redux/actions";
+import { getPostByID } from "../../redux/actions";
 
 
 const PostDetails = () => {
@@ -10,7 +10,7 @@ const PostDetails = () => {
     let urlID = url[4];
     const dispatch = useDispatch();
     useEffect(() => {
-    //   dispatch(getPostByID(urlID));
+      dispatch(getPostByID(urlID));
     }, [dispatch, urlID]);
     return ( 
         <>
