@@ -22,7 +22,6 @@ const postsReducer = (state = initialState, action) => {
         post: action.payload,
       };
     case DELETE_POST:
-        console.log(action.payload)
       return {
         ...state,
         posts: state.posts.filter((post) => {

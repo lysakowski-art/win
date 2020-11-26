@@ -76,36 +76,46 @@ export const getPostByID = (userID, postID) => async (dispatch) => {
   }
 };
 
-export const deletePost = (userID,postID) => async dispatch => {
-    try {
-        await axios.delete(
-          `https://jsonplaceholder.typicode.com/users/${userID}/posts/${postID}`
-        );
-        dispatch({
-          type: DELETE_POST,
-          payload: postID,
-        });
-      } catch (e) {
-        dispatch({
-          type: POSTS_ERROR,
-          payload: console.log(e),
-        });
-      }
-}
+export const deletePost = (userID, postID) => async (dispatch) => {
+  try {
+    const res = await axios.delete(
+      `https://jsonplaceholder.typicode.com/users/${userID}/posts/${postID}`
+    );
+    if (res.status === 204) {
+      dispatch({
+        type: DELETE_POST,
+        payload: postID,
+      });
+    } else {
+      console.log(res.data)
+    }
+  } catch (e) {
+    dispatch({
+      type: POSTS_ERROR,
+      payload: console.log(e),
+    });
+  }
+};
 
-export const addPost = (post, userID) => async dispatch => {
-    try {
-        await axios.post(
-          `https://jsonplaceholder.typicode.com/users/${userID}/posts`
-        );
-        dispatch({
-          type: ADD_NEW_POST,
-          payload: post,
-        });
-      } catch (e) {
-        dispatch({
-          type: POSTS_ERROR,
-          payload: console.log(e),
-        });
-      }
-}
+export const addPost = (post, userID) => async (dispatch) => {
+  try {
+    const res = await axios.post(
+      `https://jsonplaceholder.typicode.com/users/${userID}/posts`,
+      post,
+      {withCredentials:true}
+    );
+    if (res.status === 201) {
+      dispatch({
+        type: ADD_NEW_POST,
+        payload: post,
+      });
+    } else {
+      console.log(res.data)
+    }
+  } catch (e) {
+    dispatch({
+      type: POSTS_ERROR,
+      payload: console.log(e),
+    });
+  }
+};
