@@ -5,7 +5,8 @@ const RemovePost = ({id}) => {
     const [show, setShow] = useState(false)
     const handleClick =(e) =>{
         e.preventDefault(e)
-        setShow(!show)
+        // setShow(!show)
+        console.log(show);
     }
     return (
         <> 
