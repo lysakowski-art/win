@@ -1,9 +1,7 @@
-import { UserDataList,LoadingSpinner, UserDataItem,UserDataSubList } from "../Elements";
-
+import { UserDataList,LoadingSpinner, UserDataItem } from "../Elements";
 const UserData = ({ user }) => {
   const { name, username, email, address, phone, website, company } = user;
-    console.log(user,address, company)
-  return user ? (
+  return user.company && user.address ? (
     <UserDataList>
     <UserDataItem>name: {name}</UserDataItem>
     <UserDataItem>user-name: {username}</UserDataItem>

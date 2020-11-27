@@ -31,10 +31,12 @@ export const getUserByID = (id) => async (dispatch) => {
     const res = await axios.get(
       `https://jsonplaceholder.typicode.com/users/${id}`
     );
-    dispatch({
-      type: GET_USER_BY_ID,
-      payload: res.data,
-    });
+    if(res.status === 200){
+      dispatch({
+        type: GET_USER_BY_ID,
+        payload: res.data,
+      });
+    }
   } catch (e) {
     dispatch({
       type: USERS_ERROR,

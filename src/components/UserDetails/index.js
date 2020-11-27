@@ -21,7 +21,7 @@ const UserDetails = () => {
   }, [dispatch, userID]);
   const user = useSelector((state) => state.usersReducer.user);
   const posts = useSelector((state) => state.postsReducer.posts);
-  return posts && user ? (
+  return posts && user.address && user.company ? (
     <UserContainer>
       <UserWrapper>
         <BackToButton to={`/`}>Back</BackToButton>
