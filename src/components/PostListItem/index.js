@@ -6,7 +6,7 @@ const PostListItem = ({ post, userID }) => {
   return (
     <Link to={`/user/${userID}/${id}`}>
       <PostItem>
-        <RemovePost userId={userID} id={id} />
+        <RemovePost userID={userID} id={id} />
         <TitleH5>{title}</TitleH5>
       </PostItem>
     </Link>

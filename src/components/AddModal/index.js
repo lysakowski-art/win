@@ -30,8 +30,8 @@ const AddModal = ({ userID, id, setShow }) => {
   };
   const handleAdd = (e) => {
     e.preventDefault();
-    console.log(data);
-    // dispatch(userID,id)
+    dispatch(addPost(data,userID))
+    setShow(false);
   };
   const handleCancel = (e) => {
     e.preventDefault();

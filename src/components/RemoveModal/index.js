@@ -3,11 +3,12 @@ import {RemoveModalContainer,TitleH5,RemoveButton, CancelButton} from "../Elemen
 import {deletePost} from "../../redux/actions"
 import {useDispatch} from "react-redux"
 
-const RemoveModal = ({userID, id, setShow}) => {
+const RemoveModal = ({id, setShow}) => {
     const dispatch = useDispatch()
     const handleRemove = (e) => {
         e.preventDefault();
-        dispatch(userID,id)
+        dispatch(deletePost(id))
+        setShow(false)
     }
     const handleCancel = (e) => {
         e.preventDefault();

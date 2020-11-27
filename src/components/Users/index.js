@@ -14,7 +14,7 @@ const Users = () => {
   
   return (
     <UsersList>
-      {usersArr.slice(0,8).map(user=><UserItem key={user.id} user={user}/>)}
+      {usersArr.slice(0,8).map((user,index)=><UserItem key={index} user={user}/>)}
     </UsersList>
   );
 };

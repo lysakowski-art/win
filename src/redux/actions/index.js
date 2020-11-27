@@ -7,6 +7,7 @@ import {
   GET_POST_BY_ID,
   DELETE_POST,
   POSTS_ERROR,
+  GET_COMMENTS
 } from "../types";
 import axios from "axios";
 
@@ -76,12 +77,12 @@ export const getPostByID = (userID, postID) => async (dispatch) => {
   }
 };
 
-export const deletePost = (userID, postID) => async (dispatch) => {
+export const deletePost = (postID) => async (dispatch) => {
   try {
     const res = await axios.delete(
-      `https://jsonplaceholder.typicode.com/users/${userID}/posts/${postID}`
+      `https://jsonplaceholder.typicode.com/posts/${postID}`, {withCredentials: true}
     );
-    if (res.status === 204) {
+    if (res.status === 200) {
       dispatch({
         type: DELETE_POST,
         payload: postID,
@@ -101,8 +102,7 @@ export const addPost = (post, userID) => async (dispatch) => {
   try {
     const res = await axios.post(
       `https://jsonplaceholder.typicode.com/users/${userID}/posts`,
-      post,
-      { withCredentials: true }
+      post
     );
     if (res.status === 201) {
       dispatch({
@@ -119,3 +119,21 @@ export const addPost = (post, userID) => async (dispatch) => {
     });
   }
 };
+
+export const getComments = (userID,postID) => async dispatch => {
+  try{
+    const res = await axios.get(
+      `https://jsonplaceholder.typicode.com/users/${userID}/comments?postId=${postID}`
+      )
+      dispatch({
+        type: GET_COMMENTS,
+        payload: res.data,
+      })
+    } catch (e) {
+    dispatch({
+      type: POSTS_ERROR,
+      payload: console.log(e),
+  
+    })
+  }
+}

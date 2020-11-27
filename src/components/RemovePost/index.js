@@ -5,13 +5,12 @@ const RemovePost = ({id}) => {
     const [show, setShow] = useState(false)
     const handleClick =(e) =>{
         e.preventDefault(e)
-        console.log(`wyjebany ${id}`)
         setShow(!show)
     }
     return (
         <> 
         <RemoveButton onClick={handleClick}>Remove</RemoveButton>
-        {show? <RemoveModal setShow={setShow}/>:null}
+        {show? <RemoveModal id={id} setShow={setShow}/>:null}
         </>
      );
 }
