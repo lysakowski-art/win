@@ -135,7 +135,19 @@ const rotate = keyframes`
     transform: rotate(360deg);
   }
 `;
+export const LoadingContainer = styled.div`
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+`;
+
 export const LoadingSpinner = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border: 16px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #000000; /* Blue */
   border-radius: 50%;

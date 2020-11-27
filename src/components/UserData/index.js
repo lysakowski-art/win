@@ -1,4 +1,4 @@
-import { UserDataList,LoadingSpinner, UserDataItem } from "../Elements";
+import {LoadingContainer, UserDataList,LoadingSpinner, UserDataItem } from "../Elements";
 const UserData = ({ user }) => {
   const { name, username, email, address, phone, website, company } = user;
   return user.company && user.address ? (
@@ -15,7 +15,9 @@ const UserData = ({ user }) => {
     <UserDataItem>{company.bs}</UserDataItem>
   </UserDataList>
   ):(
+    <LoadingContainer>
       <LoadingSpinner/>
+    </LoadingContainer>
   )
 };
 
