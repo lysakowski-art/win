@@ -9,7 +9,7 @@ const Main = () => {
     <Switch>
       <Route exact path="/" component={() => <Users />} />
       <Route exact path="/user/:id" component={() => <UserDetails />} />
-      <Route exact path="/post/:id" component={() => <PostDetails />} />
+      <Route exact path="/user/:userID/:postID" component={() => <PostDetails />} />
       <Route component={() => <NotFound404 />} />
     </Switch>
   );

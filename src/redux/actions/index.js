@@ -62,7 +62,7 @@ export const getPosts = (userID) => async (dispatch) => {
 export const getPostByID = (userID, postID) => async (dispatch) => {
   try {
     const res = await axios.get(
-      `https://jsonplaceholder.typicode.com/users/${userID}/posts`
+      `https://jsonplaceholder.typicode.com/users/${userID}/posts?id=${postID}`
     );
     dispatch({
       type: GET_POST_BY_ID,
@@ -87,7 +87,7 @@ export const deletePost = (userID, postID) => async (dispatch) => {
         payload: postID,
       });
     } else {
-      console.log(res.data)
+      console.log(res.data);
     }
   } catch (e) {
     dispatch({
@@ -102,7 +102,7 @@ export const addPost = (post, userID) => async (dispatch) => {
     const res = await axios.post(
       `https://jsonplaceholder.typicode.com/users/${userID}/posts`,
       post,
-      {withCredentials:true}
+      { withCredentials: true }
     );
     if (res.status === 201) {
       dispatch({
@@ -110,7 +110,7 @@ export const addPost = (post, userID) => async (dispatch) => {
         payload: post,
       });
     } else {
-      console.log(res.data)
+      console.log(res.data);
     }
   } catch (e) {
     dispatch({

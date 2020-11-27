@@ -1,7 +1,7 @@
 import { ADD_NEW_POST, GET_POSTS, DELETE_POST, GET_POST_BY_ID } from "../types";
 
 const initialState = {
-  post: {},
+  post: [],
   posts: [],
 };
 const postsReducer = (state = initialState, action) => {
